@@ -1,0 +1,72 @@
+---
+# tasks file for fedora
+- name: Execute following block using sudo privilege
+  become: true
+  block:
+    - name: Remove default packages on Gnome Desktop
+      ansible.builtin.dnf:
+        name:
+          - cheese
+          - gnome-boxes
+          - gnome-contacts
+          - gnome-connections
+          - gnome-maps
+          - mediawriter
+        state: absent
+      when: ansible_env.XDG_CURRENT_DESKTOP == 'GNOME'
+
+    - name: Remove default packages on KDE Desktop
+      ansible.builtin.dnf:
+        name:
+          - akonadi-import-wizard
+          - akregator
+          - dnfdragora
+          - kaddressbook
+          - kamoso
+          - kdepim
+          - kgpg
+          - kmahjongg
+          - kmail
+          - kmines
+          - kolourpaint
+          - kmouth
+          - kontact
+          - konversation
+          - korganizer
+          - kpat
+          - krdc
+          - krfb
+          - qt5-qdbusviewer
+        state: absent
+      when: ansible_env.XDG_CURRENT_DESKTOP == 'KDE'
+
+    - name: Remove packages from KDE
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: absent
+      loop:
+        - '@libreoffice'
+        - 'libreoffice-core'
+
+    - name: Autoremove unneeded packages installed as dependencies
+      ansible.builtin.dnf:
+        autoremove: true
+
+    - name: Optimize dnf configuration
+      community.general.ini_file:
+        mode: '0644'
+        path: /etc/dnf/dnf.conf
+        section: main
+        option: "{{ item.key }}"
+        value: "{{ item.value }}"
+        backup: true
+      loop:
+        - {key: 'max_parallel_downloads', value: '5'}
+        - {key: 'fastestmirror', value: 'True'}
+        - {key: 'keepcache', value: 'True'}
+
+- name: Setup bash
+  ansible.builtin.blockinfile:
+    path: "{{ ansible_user_dir }}/.bashrc"
+    block: "{{ lookup('ansible.builtin.file', 'bashrc.sh') }}"
+    marker: "# {mark} CUSTOMIZE BASH"

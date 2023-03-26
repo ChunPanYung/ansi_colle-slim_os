@@ -66,6 +66,18 @@
         - {key: 'fastestmirror', value: 'True'}
         - {key: 'keepcache', value: 'True'}
 
+    - name: Enable RPM fusion, free and nonfree repository
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+      vars:
+        rpm_link: https://mirrors.rpmfusion.org/free/fedora
+        free_rpm: "rpmfusion-free-release-{{ ansible_distribution_version }}"
+        nonfree_rpm: >-
+          rpmfusion-nonfree-release-{{ ansible_distribution_version }}
+      loop:
+        - "{{ rpm_link }}/{{ free_rpm }}.noarch.rpm"
+        - "{{ rpm_link }}/{{ nonfree_rpm }}.noarch.rpm"
+
 - name: Setup bash
   ansible.builtin.blockinfile:
     path: "{{ ansible_user_dir }}/.bashrc"

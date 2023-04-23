@@ -98,3 +98,8 @@
     path: "{{ ansible_user_dir }}/.bashrc"
     block: "{{ lookup('ansible.builtin.file', 'bashrc.bash') }}"
     marker: "# {mark} CUSTOMIZE BASH"
+
+- name: Install dnf-plugin for system upgrade
+  become: true
+  ansible.builtin.dnf:
+    name: dnf-plugin-system-upgrade

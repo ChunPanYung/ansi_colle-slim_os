@@ -103,3 +103,8 @@
   become: true
   ansible.builtin.dnf:
     name: dnf-plugin-system-upgrade
+
+- name: For removing unused packages
+  become: true
+  ansible.builtin.dnf:
+    name: remove-retired-packages

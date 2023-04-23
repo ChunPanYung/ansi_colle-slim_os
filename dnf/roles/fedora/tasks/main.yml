@@ -67,6 +67,7 @@
         - {key: 'keepcache', value: 'True'}
 
 - name: Enable RPM fusion
+  tags: rpmfusion
   become: true
   block:
     - name: Install RPM Fusion gpg keys for free and nonfree

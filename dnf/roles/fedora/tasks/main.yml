@@ -104,7 +104,10 @@
   ansible.builtin.dnf:
     name: dnf-plugin-system-upgrade
 
-- name: For removing unused packages
+- name: Packages for removal and cleanup after system upgrade
   become: true
   ansible.builtin.dnf:
-    name: remove-retired-packages
+    name: "{{ item }}"
+  loop:
+    - remove-retired-packages
+    - symlinks

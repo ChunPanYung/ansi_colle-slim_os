@@ -96,5 +96,5 @@
 - name: Setup bash
   ansible.builtin.blockinfile:
     path: "{{ ansible_user_dir }}/.bashrc"
-    block: "{{ lookup('ansible.builtin.file', 'bashrc.sh') }}"
+    block: "{{ lookup('ansible.builtin.file', 'bashrc.bash') }}"
     marker: "# {mark} CUSTOMIZE BASH"

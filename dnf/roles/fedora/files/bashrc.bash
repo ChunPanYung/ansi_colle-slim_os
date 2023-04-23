@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # BASH PROMPT COLOR
 PROMPT_COLOR="\[$(tput setaf 39)\]"
 RESET="\[$(tput sgr0)\]"

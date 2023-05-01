@@ -1,0 +1,28 @@
+---
+- name: Enable RPM fusion
+  tags: rpmfusion
+  become: true
+  block:
+    - name: Install RPM Fusion gpg keys for free and nonfree
+      vars:
+        rpm_link: https://rpmfusion.org/keys?action=AttachFile&do=get&target=
+      ansible.builtin.rpm_key:
+        key: "{{ item.key }}"
+        fingerprint: "{{ item.fingerprint }}"
+      loop:
+        - {key: "{{ rpm_link }}RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020",
+           fingerprint: "79BD B88F 9BBF 7391 0FD4 095B 6A2A F961 9484 3C65"}
+        - {key: "{{ rpm_link }}RPM-GPG-KEY-rpmfusion-free-fedora-2020",
+           fingerprint: "E9A4 91A3 DE24 7814 E7E0 67EA E06F 8ECD D651 FF2E"}
+
+    - name: Enable RPM fusion, free and nonfree repository
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+      vars:
+        rpm_link: https://mirrors.rpmfusion.org
+        free_rpm: "rpmfusion-free-release-{{ ansible_distribution_version }}"
+        nonfree_rpm: >-
+          rpmfusion-nonfree-release-{{ ansible_distribution_version }}
+      loop:
+        - "{{ rpm_link }}/free/fedora/{{ free_rpm }}.noarch.rpm"
+        - "{{ rpm_link }}/nonfree/fedora/{{ nonfree_rpm }}.noarch.rpm"

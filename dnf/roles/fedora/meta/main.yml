@@ -1,7 +1,5 @@
 ---
 galaxy_info:
-  namespace: ansi_role
-  role_name: slim_linux
   author: Chun Pan Yung
   description: minimal build of fedora for personal use
 

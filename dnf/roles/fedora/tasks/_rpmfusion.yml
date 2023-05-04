@@ -2,6 +2,7 @@
 - name: Enable RPM fusion
   tags: rpmfusion
   become: true
+  when: ansible_distribution == 'Fedora'
   block:
     - name: Install RPM Fusion gpg keys for free and nonfree
       vars:

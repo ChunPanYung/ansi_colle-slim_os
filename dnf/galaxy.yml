@@ -1,6 +1,6 @@
 ---
-namespace: ansi_colle
-name: os_build
+namespace: slim_linux
+name: dnf
 version: 1.0.0
 readme: README.md
 authors:
@@ -11,9 +11,6 @@ description: |
   It will add or remove packages.
 license:
   - GPL-2.0-or-later
-repository: https://gitlab.com/ahhh-tomation/ansi_colle
 
-dependencies:
-  "ansible.posix": "*"
 tags:
   - linux

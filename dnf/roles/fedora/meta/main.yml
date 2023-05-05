@@ -4,7 +4,6 @@ galaxy_info:
   description: minimal build of fedora for personal use
 
   license: MIT
-
   min_ansible_version: "2.12"
 
   platforms:

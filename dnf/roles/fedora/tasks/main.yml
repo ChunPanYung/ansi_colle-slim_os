@@ -21,6 +21,8 @@
           - akonadi-import-wizard
           - akregator
           - dnfdragora
+          - dragon
+          - gnome-disk-utility
           - kaddressbook
           - kamoso
           - kdepim
@@ -40,7 +42,7 @@
         state: absent
       when: ansible_env.XDG_CURRENT_DESKTOP == 'KDE'
 
-    - name: Remove packages from KDE
+    - name: Remove office suite
       ansible.builtin.dnf:
         name: "{{ item }}"
         state: absent
@@ -65,8 +67,29 @@
         - {key: 'fastestmirror', value: 'True'}
         - {key: 'keepcache', value: 'True'}
 
+- name: Import and enable rpmfusion
+  tags:
+    - never
+    - rpmfusion
+  ansible.builtin.import_tasks:
+    file: _rpmfusion.yml
+
 - name: Setup bash
   ansible.builtin.blockinfile:
     path: "{{ ansible_user_dir }}/.bashrc"
-    block: "{{ lookup('ansible.builtin.file', 'bashrc.sh') }}"
+    block: "{{ lookup('ansible.builtin.file', 'bashrc.bash') }}"
     marker: "# {mark} CUSTOMIZE BASH"
+
+- name: Install dnf-plugin for system upgrade
+  become: true
+  ansible.builtin.dnf:
+    name: dnf-plugin-system-upgrade
+
+- name: Packages for post-upgrade tasks
+  become: true
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+  loop:
+    - remove-retired-packages
+    - symlinks
+    - rpmconf

@@ -6,6 +6,7 @@ readme: README.md
 authors:
   - Chun Pan Yung <31672021+ChunPanYung@users.noreply.github.com>
 
+repository: http://github.com/ChunPanYung/slim_linux#/dnf
 description: |
   Collection of os build after freshly install OS.
   It will add or remove packages.

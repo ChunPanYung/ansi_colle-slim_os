@@ -1,5 +1,5 @@
 ---
-namespace: slim_linux
+namespace: slim_os
 name: dnf
 version: 1.0.0
 readme: README.md

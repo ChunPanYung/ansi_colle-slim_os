@@ -1,2 +1,21 @@
 ---
 # tasks file for minimal
+# - name: Remove Social Media Apps
+#   become: true
+#   ansible.windows.win_package:
+#     product_id: "{{ item }}"
+#     state: absent
+#   loop:
+#     -
+
+- name: Remove Solitaire
+  become: true
+  ansible.windows.win_package:
+    product_id: Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe
+    state: absent
+
+- name: Remove OneDrive
+  become: true
+  ansible.windows.win_package:
+    product_id: Microsoft.OneDriveSync_8wekyb3d8bbwe
+    state: absent

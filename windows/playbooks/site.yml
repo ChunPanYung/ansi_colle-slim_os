@@ -1,0 +1,10 @@
+---
+- name: Windows minimal installation
+  hosts: windows
+  vars_prompt:
+    - name: ansible_become_pass
+      prompt: "BECOME password"
+
+  roles:
+    - role: slim_os.windows.minimal
+      tags: minimal

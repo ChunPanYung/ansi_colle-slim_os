@@ -23,12 +23,10 @@
   become: false
   ansible.windows.win_powershell:
     script: >-
-      Get-AppxPackage -Name 'MicrosoftTeams'
-        | Remove-AppxPackage
+      Get-AppxPackage -Name 'MicrosoftTeams' | Remove-AppxPackage
 
 - name: Remove spotify
   become: false
   ansible.windows.win_powershell:
     script: >-
-      Get-AppxPackage -Name 'SpotifyAB.SpotifyMusic'
-        | Remove-AppxPackage
+      Get-AppxPackage -Name 'SpotifyAB.SpotifyMusic' | Remove-AppxPackage

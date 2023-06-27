@@ -21,4 +21,4 @@
 
 - name: Remove Microsoft Teams
   become: false
-  ansible.windows.win_command: Remove-AppxPackage -AllUsers -Name MicrosoftTeams
+  ansible.windows.win_command: Remove-AppxPackage -AllUsers -Package 'Microsoft.Teams'

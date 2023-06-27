@@ -1,21 +1,20 @@
 ---
 # tasks file for minimal
-# - name: Remove Social Media Apps
+# - name: Remove Solitaire
 #   become: true
 #   ansible.windows.win_package:
-#     product_id: "{{ item }}"
+#     product_id: Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe
 #     state: absent
-#   loop:
-#     -
 
-- name: Remove Solitaire
-  become: true
-  ansible.windows.win_package:
-    product_id: Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe
-    state: absent
+# - name: Remove OneDrive
+#   become: true
+#   ansible.windows.win_package:
+#     product_id: Microsoft.OneDriveSync_8wekyb3d8bbwe
+#     state: absent
 
 - name: Remove OneDrive
-  become: true
-  ansible.windows.win_package:
-    product_id: Microsoft.OneDriveSync_8wekyb3d8bbwe
-    state: absent
+  become: false
+  ansible.windows.win_command: winget uninstall --Id Microsoft.OneDrive
+  register: winget_cmd
+  failed_when: "'No package found' in winget_cmd.stdout"
+  changed_when: "'Successfully installed' in winget_cmd.stdout"

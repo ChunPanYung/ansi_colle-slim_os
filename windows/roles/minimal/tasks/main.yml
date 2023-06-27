@@ -18,3 +18,7 @@
   register: winget_cmd
   failed_when: "'No package found' in winget_cmd.stdout"
   changed_when: "'Successfully installed' in winget_cmd.stdout"
+
+- name: Remove Microsoft Teams
+  become: false
+  ansible.windows.win_command: Remove-AppxPackage -AllUsers -Name MicrosoftTeams

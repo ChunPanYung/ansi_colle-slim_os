@@ -30,3 +30,9 @@
   ansible.windows.win_powershell:
     script: >-
       Get-AppxPackage -Name 'SpotifyAB.SpotifyMusic' | Remove-AppxPackage
+
+- name: Remove SolitaireCollection
+  become: false
+  ansible.windows.win_powershell:
+    script: >-
+      Get-AppxPackage -Name 'Microsoft.MicrosoftSolitaireCollection' | Remove-AppxPackage

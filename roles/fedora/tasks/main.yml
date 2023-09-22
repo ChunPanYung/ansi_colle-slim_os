@@ -67,13 +67,6 @@
         - {key: 'fastestmirror', value: 'True'}
         - {key: 'keepcache', value: 'True'}
 
-- name: Import and enable rpmfusion
-  tags:
-    - never
-    - rpmfusion
-  ansible.builtin.import_tasks:
-    file: _rpmfusion.yml
-
 - name: Setup bash
   ansible.builtin.blockinfile:
     path: "{{ ansible_user_dir }}/.bashrc"

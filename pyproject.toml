@@ -6,7 +6,7 @@ description = "Collection that removes bloatwares from distro."
 license = "MIT"
 
 authors = [
-    "Chun Pan Yung"
+  "Chun Pan Yung"
 ]
 
 repository = "https://github.com/chunpanyung/ansi_colle.slim_os"
@@ -31,20 +31,6 @@ molecule = ">=4.0"
 molecule-plugins = ">=23.4"
 
 [tool.git-cliff.changelog]
-# regex for parsing and grouping commits
-commit_parsers = [
-  { message = "^feat", group = "Features" },
-  { message = "^fix", group = "Bug Fixes" },
-  { message = "^doc", group = "Documentation" },
-  { message = "^perf", group = "Performance" },
-  { message = "^refactor", group = "Refactor" },
-  { message = "^style", group = "Styling" },
-  { message = "^test", group = "Testing" },
-  { message = "^chore\\(release\\): prepare for", skip = true },
-  { message = "^chore\\(deps\\)", skip = true },
-  { message = "^chore\\(pr\\)", skip = true },
-  { message = "^chore\\(pull\\)", skip = true },
-  { message = "^chore|ci", group = "Miscellaneous Tasks" },
-  { body = ".*security", group = "Security" },
-  { message = "^revert", group = "Revert" },
+postprocessors = [
+  { pattern = " +", replace = " "} # Replace multiple spaces with single space.
 ]

@@ -44,13 +44,12 @@
 
     - name: Remove office suite
       ansible.builtin.dnf:
-        name: "{{ item }}"
+        name:
+          - '@libreoffice'
+          - 'libreoffice-core'
         state: absent
-      loop:
-        - '@libreoffice'
-        - 'libreoffice-core'
 
-    - name: Autoremove unneeded packages installed as dependencies
+    - name: Autoremove unused packages installed as dependencies
       ansible.builtin.dnf:
         autoremove: true
 
@@ -67,13 +66,6 @@
         - {key: 'fastestmirror', value: 'True'}
         - {key: 'keepcache', value: 'True'}
 
-- name: Import and enable rpmfusion
-  tags:
-    - never
-    - rpmfusion
-  ansible.builtin.import_tasks:
-    file: _rpmfusion.yml
-
 - name: Setup bash
   ansible.builtin.blockinfile:
     path: "{{ ansible_user_dir }}/.bashrc"
@@ -88,8 +80,7 @@
 - name: Packages for post-upgrade tasks
   become: true
   ansible.builtin.dnf:
-    name: "{{ item }}"
-  loop:
-    - remove-retired-packages
-    - symlinks
-    - rpmconf
+    name:
+      - remove-retired-packages
+      - symlinks
+      - rpmconf

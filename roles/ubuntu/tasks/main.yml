@@ -8,12 +8,6 @@
         update_cache: true
       changed_when: false  # not considered change when cache is updated
 
-    - name: Remove abomination
-      ansible.builtin.apt:
-        name: snapd
-        state: absent
-        purge: true
-
     - name: Remove packages
       ansible.builtin.apt:
         name: thunderbird
@@ -29,6 +23,6 @@
         autoremove: true
 
 - name: Customize $HOME/.bashrc
-  ansible.builtin.lineinfile:
+  ansible.builtin.blockinfile:
     path: "{{ ansible_user_dir }}/bashrc.sh"
     block: "{{ lookup('ansible.builtin.file', 'bashrc.sh') }}"

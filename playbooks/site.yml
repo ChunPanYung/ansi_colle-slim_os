@@ -5,8 +5,13 @@
     - name: ansible_become_pass
       prompt: "BECOME password"
 
-  roles:
-    - role: ansi_colle.slim_os.fedora
+  tasks:
+    - name: Execute this role if it is Fedora OS
+      ansible.builtin.include_role:
+        name: ansi_colle.slim_os.fedora
       when: ansible_facts['distribution'] == "Fedora"
-    - role: ansi_colle.slim_os.ubuntu
+
+    - name: Execute this role if it is Ubuntu OS
+      ansible.builtin.include_role:
+        name: ansi_colle.slim_os.ubuntu
       when: ansible_facts['distribution'] == "Ubuntu"

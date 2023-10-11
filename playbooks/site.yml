@@ -1,0 +1,8 @@
+---
+- name: Remove bloatware from linux
+  hosts: all
+  roles:
+    - role: ansi_colle.slim_os.fedora
+      when: ansible_facts['distrubtion'] == "Fedora"
+    - role: ansi_colle.slim_os.ubuntu
+      when: ansible_facts['distrubtion'] == "Ubuntu"

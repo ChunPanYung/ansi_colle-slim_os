@@ -5,8 +5,12 @@ Github repo for removing unused packages from Linux distributions, and configure
 
 Requirements
 ------------
+[Installing Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
-Make sure your OS has `ansible` package install.
-
-dnf package manager:
-`$ sudo dnf install ansible`
+To instal and run this playbook:
+```
+ansible-galaxy collection install \
+    git+https://github.com/ChunPanYung/ansi_colle.linux.git
+ansible-playbook ansi_colle.slim_os.install  # Run this to update everytime
+ansible-playbook ansi_colle.slim_os.site  # Run this after update
+```

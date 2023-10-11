@@ -1,4 +1,4 @@
-Slim Linux
+ansi_colle.slim_os
 ==========
 
 Github repo for removing unused packages from Linux distributions, and configure a distro with an minimal GUI application for everyday use.

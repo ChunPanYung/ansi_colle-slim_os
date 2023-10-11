@@ -1,0 +1,11 @@
+---
+- name: Install collections
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Install this collections
+      vars:
+        repo_link: git+https://github.com/ChunPanYung/ansi_colle.linux.git
+      community.general.ansible_galaxy_install:
+        type: collection
+        name: "{{ repo_link }},{{ branch_tag | default('main') }}"

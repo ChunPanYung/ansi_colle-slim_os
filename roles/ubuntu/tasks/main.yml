@@ -23,6 +23,6 @@
         autoremove: true
 
 - name: Customize $HOME/.bashrc
-  ansible.builtin.lineinfile:
+  ansible.builtin.blockinfile:
     path: "{{ ansible_user_dir }}/bashrc.sh"
     block: "{{ lookup('ansible.builtin.file', 'bashrc.sh') }}"

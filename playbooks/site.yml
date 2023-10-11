@@ -3,6 +3,6 @@
   hosts: all
   roles:
     - role: ansi_colle.slim_os.fedora
-      when: ansible_facts['distrubtion'] == "Fedora"
+      when: ansible_facts['distribution'] == "Fedora"
     - role: ansi_colle.slim_os.ubuntu
-      when: ansible_facts['distrubtion'] == "Ubuntu"
+      when: ansible_facts['distribution'] == "Ubuntu"

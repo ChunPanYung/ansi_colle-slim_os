@@ -1,0 +1,18 @@
+---
+- name: Install collections
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Install community collections
+      community.general.ansible_galaxy_install:
+        type: collection
+        name: "{{ item }}"
+      loop:
+        - community.general
+
+    - name: Install this collections
+      vars:
+        this_collection: git+https://github.com/ChunPanYung/ansi_colle-slim_os.git
+      community.general.ansible_galaxy_install:
+        type: collection
+        name: "{{ this_collection }},{{ git_ver | default('main') }}"

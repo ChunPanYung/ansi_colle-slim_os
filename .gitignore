@@ -1,8 +1,19 @@
-.directory
+.self/
+TODO.md
 
 # ansible
-hosts
+.directory
+.plugin-cache.yaml
+.self
 
-# poetry
+hosts
+env-vars.yml
+
+# antsibull-changelog
+.plugin-cache.yaml
+
+# python
+__pycache__
 .venv
+.pytest_cache
 poetry.lock

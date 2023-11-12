@@ -1,0 +1,17 @@
+---
+- name: Remove bloatware from linux
+  hosts: all
+  vars_prompt:
+    - name: ansible_become_pass
+      prompt: "BECOME password"
+
+  tasks:
+    - name: Execute this role if it is Fedora OS
+      ansible.builtin.include_role:
+        name: ansi_colle.slim_os.fedora
+      when: ansible_facts['distribution'] == "Fedora"
+
+    - name: Execute this role if it is Ubuntu OS
+      ansible.builtin.include_role:
+        name: ansi_colle.slim_os.ubuntu
+      when: ansible_facts['distribution'] == "Ubuntu"

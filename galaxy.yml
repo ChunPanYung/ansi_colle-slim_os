@@ -1,6 +1,6 @@
 ---
-namespace: slim_os
-name: dnf
+namespace: ansi_colle
+name: slim_os
 version: 1.0.0
 readme: README.md
 authors:
@@ -9,8 +9,12 @@ authors:
 description: |
   Collection of os build after freshly install OS.
   It will add or remove packages.
+repository: https://github.com/ChunPanYung/ansi_colle.slim_os
+
+dependencies: {}
 license:
-  - GPL-2.0-or-later
+  - MIT
 
 tags:
   - linux
+  - windows

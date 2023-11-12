@@ -8,3 +8,6 @@ vim.filetype.add {
     ['.bashrc.bash'] = 'bash'
   }
 }
+vim.api.nvim_create_autocmd("VimEnter", {
+  command = "silent! <cmd>poetry shell"
+})

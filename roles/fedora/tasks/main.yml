@@ -13,7 +13,9 @@
           - gnome-maps
           - mediawriter
         state: absent
-      when: ansible_env.XDG_CURRENT_DESKTOP == 'GNOME'
+      when:
+        - ansible_env.XDG_CURRENT_DESKTOP is defined
+        - ansible_env.XDG_CURRENT_DESKTOP == 'GNOME'
 
     - name: Remove default packages on KDE Desktop
       ansible.builtin.dnf:
@@ -40,7 +42,9 @@
           - krfb
           - qt5-qdbusviewer
         state: absent
-      when: ansible_env.XDG_CURRENT_DESKTOP == 'KDE'
+      when:
+        - ansible_env.XDG_CURRENT_DESKTOP is defined
+        - ansible_env.XDG_CURRENT_DESKTOP == 'KDE'
 
     - name: Remove office suite
       ansible.builtin.dnf:

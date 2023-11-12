@@ -84,3 +84,4 @@
       - remove-retired-packages
       - symlinks
       - rpmconf
+      - grub2-efi-x64-modules

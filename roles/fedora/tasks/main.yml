@@ -47,6 +47,10 @@
         - ansible_env.XDG_CURRENT_DESKTOP is defined
         - ansible_env.XDG_CURRENT_DESKTOP == 'KDE'
 
+    - name: Install kwriteconfig for KDE Desktop
+      ansible.builtin.dnf:
+        name: kde-runtime
+
     - name: Remove office suite
       ansible.builtin.dnf:
         name:

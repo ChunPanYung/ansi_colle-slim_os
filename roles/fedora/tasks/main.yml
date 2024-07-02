@@ -49,7 +49,7 @@
 
     - name: DEBUG
       ansible.builtin.debug:
-        var: ansible_env["XDG_CURRENT_DESKTOP"]
+        var: ansible_env
 
     - name: Install kwriteconfig for KDE Desktop
       ansible.builtin.dnf:

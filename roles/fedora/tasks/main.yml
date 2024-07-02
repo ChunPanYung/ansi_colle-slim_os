@@ -14,8 +14,8 @@
           - mediawriter
         state: absent
       when:
-        - ansible_env.XDG_CURRENT_DESKTOP is defined
-        - ansible_env.XDG_CURRENT_DESKTOP == 'GNOME'
+        - ansible_env["XDG_CURRENT_DESKTOP"] is defined
+        - ansible_env["XDG_CURRENT_DESKTOP"] == 'GNOME'
 
     - name: Remove default packages on KDE Desktop
       ansible.builtin.dnf:
@@ -44,8 +44,8 @@
           - qt5-qdbusviewer
         state: absent
       when:
-        - ansible_env.XDG_CURRENT_DESKTOP is defined
-        - ansible_env.XDG_CURRENT_DESKTOP == 'KDE'
+        - ansible_env["XDG_CURRENT_DESKTOP"] is defined
+        - ansible_env["XDG_CURRENT_DESKTOP"] == 'KDE'
 
     - name: Install kwriteconfig for KDE Desktop
       ansible.builtin.dnf:

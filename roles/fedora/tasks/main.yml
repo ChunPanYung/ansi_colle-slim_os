@@ -48,8 +48,7 @@
         - ansible_env["XDG_CURRENT_DESKTOP"] == 'KDE'
 
     - name: DEBUG
-      ansible.builtin.debug:
-        var: ansible_env
+      ansible.builtin.setup:
 
     - name: Install kwriteconfig for KDE Desktop
       ansible.builtin.dnf:

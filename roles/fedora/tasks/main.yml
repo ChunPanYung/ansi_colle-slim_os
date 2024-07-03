@@ -1,5 +1,8 @@
 ---
 # tasks file for fedora
+- name: Check packages to determine Desktop Environment installed
+  ansible.builtin.package_facts:
+
 - name: Execute following block using sudo privilege
   become: true
   block:
@@ -14,8 +17,8 @@
           - mediawriter
         state: absent
       when:
-        - ansible_env.XDG_CURRENT_DESKTOP is defined
-        - ansible_env.XDG_CURRENT_DESKTOP == 'GNOME'
+        - ansible_env["XDG_CURRENT_DESKTOP"] is defined
+        - ansible_env["XDG_CURRENT_DESKTOP"] == 'GNOME'
 
     - name: Remove default packages on KDE Desktop
       ansible.builtin.dnf:
@@ -43,9 +46,12 @@
           - krfb
           - qt5-qdbusviewer
         state: absent
-      when:
-        - ansible_env.XDG_CURRENT_DESKTOP is defined
-        - ansible_env.XDG_CURRENT_DESKTOP == 'KDE'
+      when: "'plasma-desktop-doc' in ansible_facts.packages"
+
+    - name: Install kwriteconfig for KDE Desktop
+      ansible.builtin.dnf:
+        name: kde-runtime
+      when: "'plasma-desktop-doc' in ansible_facts.packages"
 
     - name: Remove office suite
       ansible.builtin.dnf:

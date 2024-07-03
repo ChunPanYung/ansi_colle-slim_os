@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1]
+
+### Features
+
+- Isntall kde-runtime for kde configuration.
+- [**breaking**] Remove vars prompt.
+- [**breaking**] Check packages isntalled to determine desktop environment.
+
 ## [1.0.0] - 2023-10-11
 
 ### Bug Fixes

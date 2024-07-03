@@ -51,9 +51,7 @@
     - name: Install kwriteconfig for KDE Desktop
       ansible.builtin.dnf:
         name: kde-runtime
-      when:
-        - ansible_env["XDG_CURRENT_DESKTOP"] is defined
-        - ansible_env["XDG_CURRENT_DESKTOP"] == 'KDE'
+      when: "'plasma-desktop-doc' in ansible_facts.packages"
 
     - name: Remove office suite
       ansible.builtin.dnf:

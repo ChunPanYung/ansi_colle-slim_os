@@ -43,6 +43,7 @@
           - korganizer
           - kpat
           - krdc
+          - krdp
           - krfb
           - qt5-qdbusviewer
         state: absent

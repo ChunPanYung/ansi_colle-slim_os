@@ -32,6 +32,7 @@
           - quadrapassel
           - swell-foop
           - tali
+          - transmission-common
         state: absent
       when:
         - ansible_env["XDG_CURRENT_DESKTOP"] is defined

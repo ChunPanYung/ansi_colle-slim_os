@@ -26,9 +26,10 @@
           - gnome-taquin
           - gnome-tetravex
           - hitori
+          - iagno
           - lightsoff
           - quadrapassel
-          - swell-footp
+          - swell-foop
           - tali
         state: absent
       when:

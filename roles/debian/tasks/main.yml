@@ -1,0 +1,48 @@
+---
+# tasks file for debian
+- name: Check packages to determine Desktop Environment installed
+  ansible.builtin.package_facts:
+
+- name: Execute following block using sudo privilege
+  become: true
+  block:
+    - name: Remove default packages on Gnome Desktop
+      ansible.builtin.apt:
+        name:
+          - aisleriot
+          - cheese
+          - five-or-more
+          - four-in-a-row
+          - gnome-2048
+          - gnome-chess
+          - gnome-contacts
+          - gnome-klotski
+          - gnome-mahjongg
+          - gnome-maps
+          - gnome-mines
+          - gnome-nibbles
+          - gnome-robots
+          - gnome-sudoku
+          - gnome-taquin
+          - gnome-tetravex
+          - hitori
+          - lightsoff
+          - quadrapassel
+          - swell-footp
+          - tali
+        state: absent
+      when:
+        - ansible_env["XDG_CURRENT_DESKTOP"] is defined
+        - ansible_env["XDG_CURRENT_DESKTOP"] == 'GNOME'
+
+    - name: Remove and purge libreoffice
+      ansible.builtin.apt:
+        name: libreoffice
+        state: absent
+        purge: true
+
+
+    - name: Remove dependencies that are no longer required and purge their configuration files
+      ansible.builtin.apt:
+        autoremove: true
+        purge: true

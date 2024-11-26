@@ -11,3 +11,8 @@
       ansible.builtin.include_role:
         name: ansi_colle.slim_os.ubuntu
       when: ansible_facts['distribution'] == "Ubuntu"
+
+    - name: Execute this role if it is Debian OS
+      ansible.builtin.include_role:
+        name: ansi_colle.slim_os.debian
+      when: ansible_facts['distribution'] == "Debian"

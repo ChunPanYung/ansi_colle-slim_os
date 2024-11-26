@@ -37,7 +37,8 @@
 
     - name: Remove and purge libreoffice
       ansible.builtin.apt:
-        name: libreoffice
+        name:
+          - libreoffice-common
         state: absent
         purge: true
 

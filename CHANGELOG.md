@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2024-11-27
+
+### Features
+
+- Remove krdp by default.
+- New role to slim down debian.
+- [**breaking**] Remove ansible.cfg file.
+- [**breaking**] Use pdm instead of poetry.
+
 ## [1.0.1]
 
 ### Features

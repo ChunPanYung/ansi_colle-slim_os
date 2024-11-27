@@ -19,3 +19,4 @@ __pycache__
 poetry.lock
 __init__.py
 .pdm-python
+pdm.lock

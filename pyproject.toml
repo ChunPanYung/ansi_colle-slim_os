@@ -10,9 +10,10 @@ dependencies = [
     "tomli-w>=1.0.0",
     "pywinrm",
 ]
-requires-python = "==3.12.*"
+requires-python = "==3.13.*"
 readme = "README.md"
 license = {text = "MIT"}
+version = "1.1.0"
 
 [tool.pdm.dev-dependencies]
 lint = [

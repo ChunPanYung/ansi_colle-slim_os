@@ -12,7 +12,7 @@ Requirements
 To instal and run this playbook:
 
 ```bash
-repo_name="git+https://github.com/ChunPanYung/ansi_colle-slim_os.git,main"
+repo_name="git+https://github.com/ChunPanYung/ansi_colle-slim_os.git"
 ansible-galaxy collection install "$repo_name"
 
 # Run this to update everytime

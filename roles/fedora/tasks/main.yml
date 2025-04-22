@@ -60,6 +60,7 @@
           - '@libreoffice'
           - 'libreoffice-core'
         state: absent
+        allowerasing: true
 
     - name: Autoremove unused packages installed as dependencies
       ansible.builtin.dnf:

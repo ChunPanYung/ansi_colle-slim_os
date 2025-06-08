@@ -27,13 +27,9 @@
         name:
           - akonadi-import-wizard
           - akregator
-          - dnfdragora
           - dragon
-          - digikam
-          - gnome-disk-utility
           - kaddressbook
           - kamoso
-          - kdepim
           - kgpg
           - kmahjongg
           - kmail
@@ -41,14 +37,16 @@
           - kolourpaint
           - kmouth
           - kontact
-          - konversation
           - korganizer
           - kpat
           - krdc
           - krdp
           - krfb
-          - qt5-qdbusviewer
+          - skanpage
+          - qrca
+          - neochat
         state: absent
+        autoremove: true
       when: "'plasma-desktop-doc' in ansible_facts.packages"
 
     - name: Install kwriteconfig for KDE Desktop
@@ -80,12 +78,6 @@
         - {key: 'max_parallel_downloads', value: '5'}
         - {key: 'fastestmirror', value: 'True'}
         - {key: 'keepcache', value: 'True'}
-
-- name: Setup bash
-  ansible.builtin.blockinfile:
-    path: "{{ ansible_user_dir }}/.bashrc"
-    block: "{{ lookup('ansible.builtin.file', 'bashrc.bash') }}"
-    marker: "# {mark} CUSTOMIZE BASH"
 
 - name: Install dnf-plugin for system upgrade
   become: true

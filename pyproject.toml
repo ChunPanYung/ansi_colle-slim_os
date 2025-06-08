@@ -1,41 +1,16 @@
 [project]
 name = "ansi_colle-slim_os"
-dynamic = ["version"]  # Check galaxy.yml for version
+dynamic = ["version"] # Check galaxy.yml for version
 description = "Collection that removes bloatwares from distro."
 authors = [
-    {name = "Chun Pan Yung", email = "31672021+ChunPanYung@users.noreply.github.com"},
+  { name = "Chun Pan Yung", email = "31672021+ChunPanYung@users.noreply.github.com" },
 ]
-dependencies = [
-    "ansible>=9.2.0",
-    "tomli-w>=1.0.0",
-    "pywinrm",
-]
+dependencies = ["ansible>=9.2.0", "tomli-w>=1.0.0", "pywinrm"]
 requires-python = "==3.13.*"
 readme = "README.md"
-license = {text = "MIT"}
-version = "1.1.0"
+license = { text = "MIT" }
 
-[tool.pdm.dev-dependencies]
-lint = [
-  "ansible-lint"
-]
-doc = [
-  "antsibull-docs"
-]
-test = [
-  "ansible-dev-tools",
-]
-
-[tool.pdm.resolution.overrides]
-will-not-work-on-windows-try-from-wsl-instead = "0.1.0"  # ignore ansible-lint install error
-
-[tool.pdm]
-distribution = false
-
-[tool.pdm.scripts]
-install = "ansible-playbook ansi_colle.slim_os.install"
-exec = "ansible-playbook ansi_colle.slim_os.site --ask-become-pass --inventory"
-changelog = "git-cliff --prepend CHANGELOG.md --unreleased --tag"
-
-[tool.pdm.version]
-source = "scm"
+[project.optional-dependencies]
+log = ["git-cliff", "uv"]
+test = ["validate-pyproject", "pre-commit"]
+dev = ["ansible-dev-tools", "go-task-bin"]

@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2025-06-08
+
+### 🚀 Features
+
+- [**breaking**] Remove bash prompt color.
+- [**breaking**] Remove linting configuration.
+- [**breaking**] Remove default `cliff.toml` since it will use automatically.
+
+### 📚 Documentation
+
+- Update readme.
+- Cleanup `pyproject.toml` file.
+
+### 🎨 Styling
+
+- [**breaking**] Change variable name in playbook.
+
+### 🧪 Testing
+
+- Setup `Taskfile.yml``
+
 ## [1.1.0] - 2024-11-27
 
 ### Features

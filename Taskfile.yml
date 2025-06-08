@@ -19,14 +19,12 @@ tasks:
     desc: |
       Run this plabyook:
       INVENTORY -> inventory file path, default is localhost.
-      TAGS -> Select only role with specific tag, you can view them from site.yml file.
     vars:
       INVENTORY: '{{.INVENTORY | default "127.0.0.1, --connection=local"}}'
-      TAGS: '{{.TAGS | default "all"}}'
     cmds:
       - cmd: >-
           ansible-playbook ansi_colle.slim_os.site --ask-become-pass
-          --inventory {{.INVENTORY}} --tags {{.TAGS}}
+          --inventory {{.INVENTORY}}
   install:
     desc: |
       Install this collection and requirement.

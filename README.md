@@ -12,10 +12,12 @@ Requirements
 To instal and run this playbook:
 
 ```bash
-url="git+https://github.com/ChunPanYung/ansi_colle-slim_os.git"
-ansible-galaxy collection install "$url"
+export ANSIBLE_CALLBACK_RESULT_FORMAT=yaml
 
-# Run this to update everytime
+ansible-galaxy collection install \
+  git+https://github.com/ChunPanYung/ansi_colle-slim_os.git
+
+# Run this to update every time
 ansible-playbook ansi_colle.slim_os.install
 
 # Run this after update, it will ask you sudo password
